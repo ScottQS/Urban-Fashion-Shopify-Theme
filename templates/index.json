@@ -9,12 +9,74 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "hello-world",
-      "settings": {}
+    "streetwear_home": {
+      "type": "streetwear-home",
+      "blocks": {
+        "category_windbreakers": {
+          "type": "category",
+          "settings": {
+            "title": "Windbreakers",
+            "image": "",
+            "link": ""
+          }
+        },
+        "category_pants": {
+          "type": "category",
+          "settings": {
+            "title": "Pants",
+            "image": "",
+            "link": ""
+          }
+        },
+        "category_full_sets": {
+          "type": "category",
+          "settings": {
+            "title": "Full sets",
+            "image": "",
+            "link": ""
+          }
+        },
+        "category_hats": {
+          "type": "category",
+          "settings": {
+            "title": "Hats",
+            "image": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "category_windbreakers",
+        "category_pants",
+        "category_full_sets",
+        "category_hats"
+      ],
+      "settings": {
+        "background_image": "",
+        "hero_image": "",
+        "hero_heading": "BUILT\nDIFFERENT.",
+        "hero_subheading": "LIMITED STREETWEAR DROPS.",
+        "hero_button_label": "Shop now",
+        "hero_button_link": "",
+        "featured_collection": "",
+        "products_heading": "Latest arrivals",
+        "products_to_show": 4,
+        "show_product_badge": true,
+        "product_badge_text": "Limited",
+        "products_button_label": "Shop now",
+        "products_button_link": "",
+        "categories_heading": "Shop by category",
+        "newsletter_heading": "Join the drop list",
+        "newsletter_subheading": "Get exclusive drops and early access to the latest releases.",
+        "newsletter_placeholder": "Enter your email",
+        "newsletter_button_label": "Sign up",
+        "accent_color": "#6f3ff5",
+        "panel_background": "#10131d",
+        "overlay_opacity": 55
+      }
     }
   },
   "order": [
-    "main"
+    "streetwear_home"
   ]
 }
