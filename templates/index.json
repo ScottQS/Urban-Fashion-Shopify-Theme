@@ -16,7 +16,6 @@
           "type": "category",
           "settings": {
             "title": "Windbreakers",
-            "image": "",
             "link": ""
           }
         },
@@ -24,7 +23,6 @@
           "type": "category",
           "settings": {
             "title": "Pants",
-            "image": "",
             "link": ""
           }
         },
@@ -32,7 +30,6 @@
           "type": "category",
           "settings": {
             "title": "Full sets",
-            "image": "",
             "link": ""
           }
         },
@@ -40,7 +37,6 @@
           "type": "category",
           "settings": {
             "title": "Hats",
-            "image": "",
             "link": ""
           }
         }
@@ -52,8 +48,8 @@
         "category_hats"
       ],
       "settings": {
-        "background_image": "",
-        "hero_image": "",
+        "hero_image": "shopify://shop_images/574908EA-8266-4C35-9516-27860983F381.png",
+        "hero_foreground_image": "shopify://shop_images/IMG_6298.png",
         "hero_heading": "BUILT\nDIFFERENT.",
         "hero_subheading": "LIMITED STREETWEAR DROPS.",
         "hero_button_label": "Shop now",
