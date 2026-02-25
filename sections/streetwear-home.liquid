@@ -18,7 +18,7 @@
 
 <section
   class="streetwear-home full-width"
-  style="--streetwear-accent: {{ section.settings.accent_color }}; --streetwear-panel: {{ section.settings.panel_background }};"
+  style="--streetwear-accent: {{ section.settings.accent_color }}; --streetwear-panel: {{ section.settings.panel_background }}; --streetwear-overlay-alpha: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"
 >
   <div class="streetwear-home__background" aria-hidden="true">
     {% if section.settings.background_image %}
@@ -232,7 +232,7 @@
     background:
       linear-gradient(
         to bottom,
-        rgba(6, 8, 14, {{ section.settings.overlay_opacity | divided_by: 100.0 }}) 0%,
+        rgba(6, 8, 14, var(--streetwear-overlay-alpha)) 0%,
         rgba(7, 9, 16, 0.65) 34%,
         rgba(6, 8, 14, 0.95) 100%
       );
