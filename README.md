@@ -16,30 +16,55 @@ A minimal, carefully structured Shopify theme designed to help you quickly get s
 
 ### Prerequisites
 
-Before starting, ensure you have the latest Shopify CLI installed:
+Before starting, ensure you have:
 
-- [Shopify CLI](https://shopify.dev/docs/api/shopify-cli) – helps you download, upload, preview themes, and streamline your workflows
+- [Node.js](https://nodejs.org/) 20+ and npm
+- A Shopify store you can access for theme development
 
 If you use VS Code:
 
 - [Shopify Liquid VS Code Extension](https://shopify.dev/docs/storefronts/themes/tools/shopify-liquid-vscode) – provides syntax highlighting, linting, inline documentation, and auto-completion specifically designed for Liquid templates
 
-### Clone
+### Install and configure
 
-Clone this repository using Git or Shopify CLI:
+Install project dependencies (includes Shopify CLI locally in this repo):
 
 ```bash
-git clone git@github.com:Shopify/skeleton-theme.git
-# or
-shopify theme init
+npm install
 ```
 
-### Preview
-
-Preview this theme using Shopify CLI:
+Create your local environment file:
 
 ```bash
-shopify theme dev
+npm run setup
+```
+
+Then edit `.env` and set:
+
+- `SHOPIFY_STORE` (required) - example: `your-store.myshopify.com`
+- `SHOPIFY_THEME_ID` (optional) - target a specific remote theme ID
+
+### Authenticate and preview
+
+Authenticate Shopify CLI to your store:
+
+```bash
+npm run login
+```
+
+Run the local preview:
+
+```bash
+npm run dev
+```
+
+### Common commands
+
+```bash
+npm run pull             # pull from remote theme
+npm run push             # push local changes
+npm run check            # run Shopify theme checks
+npm run version:shopify  # Shopify CLI version
 ```
 
 ## Theme architecture

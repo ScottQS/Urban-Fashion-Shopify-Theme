@@ -1,0 +1,22 @@
+{
+  "name": "shopify-skeleton-theme",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local Shopify theme developer tooling",
+  "scripts": {
+    "setup": "bash ./scripts/shopify-theme.sh setup",
+    "login": "bash ./scripts/shopify-theme.sh login",
+    "dev": "bash ./scripts/shopify-theme.sh dev",
+    "pull": "bash ./scripts/shopify-theme.sh pull",
+    "push": "bash ./scripts/shopify-theme.sh push",
+    "check": "bash ./scripts/shopify-theme.sh check",
+    "version:shopify": "bash ./scripts/shopify-theme.sh version",
+    "shopify": "bash ./scripts/shopify-theme.sh raw"
+  },
+  "devDependencies": {
+    "@shopify/cli": "latest"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
