@@ -1,39 +1,103 @@
-<footer>
-  <div class="footer__copyright">
-    &copy;
-    {{ 'now' | date: '%Y' }}
-    {{ shop.name | link_to: routes.root_url }}, {{ powered_by_link }}
-  </div>
+<footer class="streetwear-footer full-width">
+  <div class="streetwear-footer__inner">
+    <div class="streetwear-footer__top">
+      <p class="streetwear-footer__tagline">{{ section.settings.tagline | escape }}</p>
 
-  <div class="footer__links">
-    {% for link in section.settings.menu.links %}
-      {{ link.title | link_to: link.url }}
-    {% endfor %}
-  </div>
+      <div class="streetwear-footer__links">
+        {% for link in section.settings.menu.links %}
+          {{ link.title | link_to: link.url }}
+        {% endfor %}
+      </div>
+    </div>
 
-  <div class="footer__payment">
-    {% if section.settings.show_payment_icons %}
-      {% for type in shop.enabled_payment_types %}
-        {{ type | payment_type_svg_tag }}
-      {% endfor %}
-    {% endif %}
+    <div class="streetwear-footer__bottom">
+      <p class="streetwear-footer__copyright">
+        &copy;
+        {{ 'now' | date: '%Y' }}
+        {{ shop.name | link_to: routes.root_url }}
+      </p>
+
+      {% if section.settings.show_payment_icons %}
+        <div class="streetwear-footer__payment">
+          {% for type in shop.enabled_payment_types %}
+            {{ type | payment_type_svg_tag }}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
   </div>
 </footer>
 
 {% stylesheet %}
-  footer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
+  .streetwear-footer {
+    margin-top: 2.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    background: #090b12;
+    color: #e6e7ef;
   }
-  footer a {
+
+  .streetwear-footer a {
+    color: inherit;
     text-decoration: none;
-    color: var(--color-foreground);
   }
-  footer .footer__links,
-  footer .footer__payment {
-    display: flex;
+
+  .streetwear-footer__inner {
+    display: grid;
+    gap: 1.25rem;
+    margin: 0 auto;
+    max-width: min(1200px, calc(100% - var(--page-margin) * 2));
+    padding: 2rem 0;
+    width: 100%;
+  }
+
+  .streetwear-footer__top {
+    display: grid;
     gap: 1rem;
+  }
+
+  .streetwear-footer__tagline {
+    font-size: 0.95rem;
+    color: rgba(230, 231, 239, 0.82);
+  }
+
+  .streetwear-footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem 1.15rem;
+  }
+
+  .streetwear-footer__links a {
+    font-size: 0.84rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .streetwear-footer__links a:hover {
+    color: #a590ff;
+  }
+
+  .streetwear-footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-between;
+  }
+
+  .streetwear-footer__copyright {
+    font-size: 0.82rem;
+    color: rgba(230, 231, 239, 0.72);
+  }
+
+  .streetwear-footer__payment {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .streetwear-footer__payment svg {
+    width: 2.1rem;
+    height: auto;
   }
 {% endstylesheet %}
 
@@ -45,6 +109,12 @@
       "type": "link_list",
       "id": "menu",
       "label": "t:labels.menu"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Streetwear essentials. Built for the city."
     },
     {
       "type": "checkbox",
