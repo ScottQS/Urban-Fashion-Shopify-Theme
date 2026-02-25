@@ -1,0 +1,23 @@
+<section class="section-shell page-section">
+  {% if section.settings.show_title %}
+    <h1>{{ page.title }}</h1>
+  {% endif %}
+
+  <div class="rte">
+    {{ page.content }}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main page",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "Show page heading",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

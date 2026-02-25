@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "main": {
+      "type": "collection",
+      "settings": {
+        "products_per_page": 24,
+        "subcollections_menu": ""
+      }
+    },
+    "custom_liquid": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_liquid"
+  ]
+}

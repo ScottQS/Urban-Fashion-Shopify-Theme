@@ -1,0 +1,20 @@
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "brand_message": "Built for bold catalogs, trend drops, and fast-moving fashion stories.",
+        "menu": "footer",
+        "newsletter_heading": "Stay in the loop",
+        "show_social_icons": true,
+        "show_follow_on_shop": true,
+        "show_payment_icons": true
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "general": {
+    "column": "Column",
+    "custom_section": "Custom section",
+    "group": "Group",
+    "layout": "Layout",
+    "row": "Row",
+    "text": "Text"
+  },
+  "labels": {
+    "alignment": "Alignment",
+    "background": "Background",
+    "layout_direction": "Layout direction",
+    "padding": "Padding",
+    "text": "Text",
+    "text_style": "Text style"
+  },
+  "options": {
+    "alignment": {
+      "left": "Left",
+      "center": "Center",
+      "right": "Right"
+    },
+    "direction": {
+      "horizontal": "Horizontal",
+      "vertical": "Vertical"
+    },
+    "text_style": {
+      "title": "Title",
+      "subtitle": "Subtitle",
+      "normal": "Normal text"
+    }
+  }
+}

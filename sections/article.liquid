@@ -1,0 +1,123 @@
+<article class="section-shell article-page">
+  {% if article.image %}
+    {% render
+      'image',
+      image: article.image,
+      width: 2000,
+      class: 'article-page__hero',
+      sizes: '100vw'
+    %}
+  {% endif %}
+
+  <header class="article-page__header">
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.published_at | time_tag: format: 'date' }} by {{ article.author }}</p>
+    <p>{{ article.comments_count }} comments</p>
+  </header>
+
+  <div class="rte article-page__content">
+    {{ article.content }}
+  </div>
+
+  {% if blog.comments_enabled? %}
+    <section class="article-page__comments" id="comments">
+      <h2>Comments</h2>
+
+      {% paginate article.comments by 10 %}
+        {% if article.comments_count > 0 %}
+          <ul role="list" class="article-page__comments-list">
+            {% for comment in article.comments %}
+              <li class="card article-page__comment">
+                <div class="card__content">
+                  <p><strong>{{ comment.author }}</strong></p>
+                  <p>{{ comment.created_at | time_tag: format: 'date' }}</p>
+                  <p>{{ comment.content }}</p>
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        {% if paginate.pages > 1 %}
+          <nav class="pagination" role="navigation" aria-label="Comments pagination">
+            {{ paginate | default_pagination: anchor: 'comments' }}
+          </nav>
+        {% endif %}
+      {% endpaginate %}
+
+      {% form 'new_comment', article, class: 'article-page__comment-form card' %}
+        <div class="card__content">
+          <h3>Leave a comment</h3>
+
+          {% if form.posted_successfully? %}
+            <p>Your comment was posted successfully.</p>
+          {% endif %}
+
+          {{ form.errors | default_errors }}
+
+          <label for="CommentAuthor-{{ section.id }}">Name</label>
+          <input
+            id="CommentAuthor-{{ section.id }}"
+            type="text"
+            name="comment[author]"
+            value="{{ form.author }}"
+            required
+          >
+
+          <label for="CommentEmail-{{ section.id }}">Email</label>
+          <input
+            id="CommentEmail-{{ section.id }}"
+            type="email"
+            name="comment[email]"
+            value="{{ form.email }}"
+            required
+          >
+
+          <label for="CommentBody-{{ section.id }}">Comment</label>
+          <textarea id="CommentBody-{{ section.id }}" name="comment[body]" required>{{ form.body }}</textarea>
+
+          <button class="button button--primary" type="submit">Post comment</button>
+        </div>
+      {% endform %}
+    </section>
+  {% endif %}
+</article>
+
+{% stylesheet %}
+  .article-page__hero img {
+    width: 100%;
+    max-height: 34rem;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+
+  .article-page__header {
+    margin-block: 1.1rem;
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  .article-page__content {
+    margin-bottom: 1.6rem;
+  }
+
+  .article-page__comments-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .article-page__comment-form .card__content {
+    display: grid;
+    gap: 0.5rem;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Main article",
+  "settings": []
+}
+{% endschema %}
