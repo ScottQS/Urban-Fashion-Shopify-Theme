@@ -600,14 +600,21 @@
   @media (max-width: 760px) {
     .streetwear-home__hero {
       min-height: 410px;
+      padding-bottom: 1rem;
+    }
+
+    .streetwear-home__hero-copy {
+      max-width: min(94vw, 430px);
     }
 
     .streetwear-home__hero-foreground-row {
-      margin-top: -4.5rem;
+      margin-top: 0.55rem;
+      justify-content: center;
+      z-index: 1;
     }
 
     .streetwear-home__hero-figure {
-      width: min(58vw, 300px);
+      width: min(78vw, 340px);
     }
 
     .streetwear-home__panel h2,
@@ -617,6 +624,14 @@
   }
 
   @media (max-width: 600px) {
+    .streetwear-home__hero-figure {
+      width: min(82vw, 320px);
+    }
+
+    .streetwear-home__content {
+      padding-top: 0.8rem;
+    }
+
     .streetwear-home__newsletter-form {
       grid-template-columns: 1fr;
     }
