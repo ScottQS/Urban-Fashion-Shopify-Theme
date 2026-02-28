@@ -56,20 +56,6 @@
 
     <div class="streetwear-home__hero-overlay" aria-hidden="true"></div>
 
-    {% if section.settings.hero_foreground_image %}
-      <div class="streetwear-home__hero-figure">
-        {{
-          section.settings.hero_foreground_image
-          | image_url: width: 1600
-          | image_tag:
-            widths: '420,640,840,1100,1400,1600',
-            sizes: '(max-width: 760px) 54vw, 40vw',
-            class: 'streetwear-home__hero-figure-image',
-            loading: 'eager'
-        }}
-      </div>
-    {% endif %}
-
     <div class="streetwear-home__hero-copy">
       {% if section.settings.hero_heading != blank %}
         <h1>{{ section.settings.hero_heading | escape | newline_to_br }}</h1>
@@ -89,6 +75,20 @@
 
   <div class="streetwear-home__content">
     <section class="streetwear-home__panel streetwear-home__panel--products">
+      {% if section.settings.hero_foreground_image %}
+        <div class="streetwear-home__arrivals-figure" aria-hidden="true">
+          {{
+            section.settings.hero_foreground_image
+            | image_url: width: 1600
+            | image_tag:
+              widths: '420,640,840,1100,1400,1600',
+              sizes: '(max-width: 760px) 54vw, 34vw',
+              class: 'streetwear-home__arrivals-figure-image',
+              loading: 'eager'
+          }}
+        </div>
+      {% endif %}
+
       <h2>{{ section.settings.products_heading | escape }}</h2>
 
       <div class="streetwear-home__products">
@@ -301,8 +301,7 @@
     z-index: 2;
     max-width: min(94vw, 540px);
     padding-top: clamp(0.8rem, 2.6vw, 1.5rem);
-    /* Reserve space so foreground figure doesn't overlap text. */
-    padding-right: clamp(145px, 35vw, 420px);
+    padding-right: 0;
   }
 
   .streetwear-home__hero-copy h1 {
@@ -322,26 +321,6 @@
     color: rgba(244, 244, 255, 0.86);
     font-size: clamp(0.88rem, 2.25vw, 1.22rem);
     font-weight: 500;
-  }
-
-  .streetwear-home__hero-figure {
-    position: absolute;
-    right: -0.4rem;
-    bottom: 0;
-    z-index: 1;
-    width: min(52vw, 620px);
-    height: 100%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    pointer-events: none;
-  }
-
-  .streetwear-home__hero-figure-image {
-    width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    object-position: bottom right;
   }
 
   .streetwear-home__content {
@@ -386,6 +365,39 @@
     border: 1px solid rgba(255, 255, 255, 0.12);
     background: var(--streetwear-panel);
     padding: 0.85rem;
+  }
+
+  .streetwear-home__panel--products {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .streetwear-home__arrivals-figure {
+    position: absolute;
+    top: -1.4rem;
+    right: -0.3rem;
+    z-index: 0;
+    width: min(40vw, 410px);
+    height: calc(100% + 1.4rem);
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    pointer-events: none;
+  }
+
+  .streetwear-home__arrivals-figure-image {
+    width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: top right;
+  }
+
+  .streetwear-home__panel--products > h2,
+  .streetwear-home__panel--products .streetwear-home__products,
+  .streetwear-home__panel--products .streetwear-home__button {
+    position: relative;
+    z-index: 2;
   }
 
   .streetwear-home__panel h2,
@@ -583,11 +595,12 @@
     .streetwear-home__hero-copy {
       max-width: 620px;
       padding-top: 2.2rem;
-      padding-right: clamp(260px, 36vw, 520px);
     }
 
-    .streetwear-home__hero-figure {
-      width: min(45vw, 660px);
+    .streetwear-home__arrivals-figure {
+      top: -2rem;
+      width: min(36vw, 460px);
+      height: calc(100% + 2rem);
     }
   }
 
@@ -598,12 +611,13 @@
 
     .streetwear-home__hero-copy {
       max-width: min(94vw, 430px);
-      padding-right: clamp(118px, 44vw, 235px);
     }
 
-    .streetwear-home__hero-figure {
-      width: min(56vw, 300px);
-      right: -0.25rem;
+    .streetwear-home__arrivals-figure {
+      top: -0.8rem;
+      right: -0.2rem;
+      width: min(58vw, 320px);
+      height: calc(100% + 0.8rem);
     }
 
     .streetwear-home__panel h2,
@@ -613,8 +627,8 @@
   }
 
   @media (max-width: 600px) {
-    .streetwear-home__hero-figure {
-      width: min(58vw, 265px);
+    .streetwear-home__arrivals-figure {
+      width: min(60vw, 300px);
     }
 
     .streetwear-home__newsletter-form {
