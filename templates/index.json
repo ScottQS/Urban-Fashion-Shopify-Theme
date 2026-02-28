@@ -50,7 +50,7 @@
       "settings": {
         "background_image": "shopify://shop_images/574908EA-8266-4C35-9516-27860983F381_53b58a66-d44a-4c39-bf52-b36b4d313d1d.png",
         "hero_image": "shopify://shop_images/574908EA-8266-4C35-9516-27860983F381.png",
-        "hero_foreground_image": "",
+        "hero_foreground_image": "shopify://shop_images/IMG_6322.png",
         "hero_heading": "BUILT\nDIFFERENT.",
         "hero_subheading": "LIMITED STREETWEAR DROPS.",
         "hero_button_label": "Shop now",
