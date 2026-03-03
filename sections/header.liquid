@@ -5,15 +5,32 @@
   endif
 %}
 
+{% capture announcement_item %}
+  {% if section.settings.announcement_link != blank %}
+    <a href="{{ section.settings.announcement_link }}">{{ section.settings.announcement_text | escape }}</a>
+  {% else %}
+    <span>{{ section.settings.announcement_text | escape }}</span>
+  {% endif %}
+{% endcapture %}
+
 <header class="streetwear-header full-width">
   {% if section.settings.show_announcement and section.settings.announcement_text != blank %}
     <div class="streetwear-header__announcement">
       <div class="streetwear-header__announcement-content">
-        {% if section.settings.announcement_link != blank %}
-          <a href="{{ section.settings.announcement_link }}">{{ section.settings.announcement_text | escape }}</a>
-        {% else %}
-          <p>{{ section.settings.announcement_text | escape }}</p>
-        {% endif %}
+        <div class="streetwear-header__announcement-marquee" role="status" aria-live="polite">
+          <div class="streetwear-header__announcement-track">
+            <div class="streetwear-header__announcement-items">
+              {% for i in (1..3) %}
+                {{ announcement_item }}
+              {% endfor %}
+            </div>
+            <div class="streetwear-header__announcement-items" aria-hidden="true">
+              {% for i in (1..3) %}
+                {{ announcement_item }}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   {% endif %}
@@ -99,12 +116,32 @@
     min-height: 2rem;
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
+    overflow: hidden;
   }
 
-  .streetwear-header__announcement-content p,
-  .streetwear-header__announcement-content a {
+  .streetwear-header__announcement-marquee {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .streetwear-header__announcement-track {
+    display: flex;
+    width: max-content;
+    animation: streetwear-announcement-scroll 16s linear infinite;
+    will-change: transform;
+  }
+
+  .streetwear-header__announcement-items {
+    display: inline-flex;
+    align-items: center;
+    gap: 2.1rem;
+    flex-shrink: 0;
+    padding-right: 2.1rem;
+  }
+
+  .streetwear-header__announcement-items > span,
+  .streetwear-header__announcement-items > a {
+    white-space: nowrap;
     color: #ffffff;
     font-size: 0.74rem;
     font-weight: 700;
@@ -114,9 +151,32 @@
     text-decoration: none;
   }
 
-  .streetwear-header__announcement-content a:hover {
+  .streetwear-header__announcement-items > a:hover {
     text-decoration: underline;
     text-underline-offset: 0.16rem;
+  }
+
+  @keyframes streetwear-announcement-scroll {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .streetwear-header__announcement-track {
+      animation: none;
+    }
+
+    .streetwear-header__announcement-content {
+      justify-content: center;
+    }
+
+    .streetwear-header__announcement-items[aria-hidden='true'] {
+      display: none;
+    }
   }
 
   .streetwear-header__inner {
