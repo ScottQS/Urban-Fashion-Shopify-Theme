@@ -605,9 +605,26 @@
   }
 
   @media (min-width: 761px) and (max-width: 1024px) {
+    .streetwear-home__panel--products::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: var(--streetwear-panel);
+      pointer-events: none;
+    }
+
     .streetwear-home__arrivals-figure {
+      z-index: 0;
       right: 0.1rem;
       transform: translateY(-21.5rem);
+    }
+
+    .streetwear-home__panel--products > h2,
+    .streetwear-home__panel--products .streetwear-home__products,
+    .streetwear-home__panel--products .streetwear-home__button {
+      z-index: 2;
     }
   }
 
