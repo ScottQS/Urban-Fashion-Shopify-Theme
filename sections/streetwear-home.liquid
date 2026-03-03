@@ -82,7 +82,7 @@
             | image_url: width: 1600
             | image_tag:
               widths: '420,640,840,1100,1400,1600',
-              sizes: '(max-width: 760px) 48vw, 34vw',
+              sizes: '(max-width: 760px) 44vw, 30vw',
               class: 'streetwear-home__arrivals-figure-image',
               loading: 'eager'
           }}
@@ -375,11 +375,11 @@
 
   .streetwear-home__arrivals-figure {
     position: absolute;
-    top: -3.2rem;
-    right: 0;
+    top: -2.4rem;
+    right: 0.2rem;
     z-index: 1;
-    width: min(34vw, 330px);
-    height: calc(100% + 3.2rem);
+    width: min(30vw, 290px);
+    height: calc(100% + 2.4rem);
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
@@ -390,7 +390,7 @@
     width: 100%;
     max-height: 100%;
     object-fit: contain;
-    object-position: top right;
+    object-position: top center;
   }
 
   .streetwear-home__panel--products > h2,
@@ -599,7 +599,7 @@
 
     .streetwear-home__arrivals-figure {
       top: -2rem;
-      width: min(32vw, 400px);
+      width: min(28vw, 350px);
       height: calc(100% + 2rem);
     }
   }
@@ -614,10 +614,10 @@
     }
 
     .streetwear-home__arrivals-figure {
-      top: -16.5rem;
-      right: -0.1rem;
-      width: min(46vw, 270px);
-      height: calc(100% + 16.5rem);
+      top: -13rem;
+      right: 0.2rem;
+      width: min(38vw, 230px);
+      height: calc(100% + 13rem);
     }
 
     .streetwear-home__panel h2,
@@ -628,9 +628,9 @@
 
   @media (max-width: 600px) {
     .streetwear-home__arrivals-figure {
-      top: -15rem;
-      width: min(48vw, 245px);
-      height: calc(100% + 15rem);
+      top: -11.8rem;
+      width: min(40vw, 210px);
+      height: calc(100% + 11.8rem);
     }
 
     .streetwear-home__newsletter-form {
