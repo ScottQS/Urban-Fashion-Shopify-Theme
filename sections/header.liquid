@@ -6,6 +6,18 @@
 %}
 
 <header class="streetwear-header full-width">
+  {% if section.settings.show_announcement and section.settings.announcement_text != blank %}
+    <div class="streetwear-header__announcement">
+      <div class="streetwear-header__announcement-content">
+        {% if section.settings.announcement_link != blank %}
+          <a href="{{ section.settings.announcement_link }}">{{ section.settings.announcement_text | escape }}</a>
+        {% else %}
+          <p>{{ section.settings.announcement_text | escape }}</p>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+
   <div class="streetwear-header__inner">
     <details class="streetwear-header__menu">
       <summary aria-label="Open menu">
@@ -74,6 +86,37 @@
     background: rgba(7, 9, 14, 0.9);
     color: #f4f4ff;
     backdrop-filter: blur(8px);
+  }
+
+  .streetwear-header__announcement {
+    background: #6f3ff5;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .streetwear-header__announcement-content {
+    margin: 0 auto;
+    max-width: min(1200px, calc(100% - var(--page-margin) * 2));
+    min-height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .streetwear-header__announcement-content p,
+  .streetwear-header__announcement-content a {
+    color: #ffffff;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .streetwear-header__announcement-content a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.16rem;
   }
 
   .streetwear-header__inner {
@@ -254,6 +297,23 @@
       "type": "link_list",
       "id": "menu",
       "label": "t:labels.menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show announcement bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement text",
+      "default": "Free shipping on all orders"
+    },
+    {
+      "type": "url",
+      "id": "announcement_link",
+      "label": "Announcement link"
     },
     {
       "type": "image_picker",
